@@ -23,85 +23,59 @@ def isGraphical(seq):
 class Graph:
 	# konstrukcja grafu
 	def __init__(self, seq):
-		seq = [i for i in seq]
-		self.adjacencyList = []
-		length = len(seq)
-		self.adjacencyList = [[0 for i in range(length)] for vertices in seq]
-		for vertice in range(length):
-			i=1
-			while seq[0] > 0:
-				print(seq)
-				next = vertice + i
-				self.adjacencyList[vertice][next] = self.adjacencyList[next][vertice] = 1
-				seq[0] -= 1	
-				seq[i] -= 1
-				i+=1
-			seq.sort(reverse=True)
-	
-
-			
+		seq.sort(reverse=True)
+		self.seq = (i for i in seq)
+		#tworzenie kolejnych reprezentacji grafu, KOLEJNOŚĆ WYWOŁANIA WAŻNA !!!
+		self.AM = self.makeAM()
+		self.AL = self.makeAL()
+		self.IM = self.makeIM()
+		
+				
 	# wyświetlanie grafu				
-	def show(self):
-		x = 0
-		for i in self.adjacencyList:
+	def showAM(self):
+		for i in self.AM:
 			print( [j for j in i])
 	
-	
-	#zamiana krawędzi - randomizacja grafu nie działa!		
-	'''def rand(self):
-		from random import randint
-		length = len(self.adjacencyList) - 1
-		print(length)
-			
-		a, b, c, d = 0, 0, 0, 0	
-			
-		while True:
-			a, b, c, d = randint(0, length), randint(0, length), randint(0, length), 0
-			while self.adjacencyList[a][b] == 0 or a == b:
-				b = randint(0, length)
-				if b > length: 
-					a=randint(0, length)
-					b=0
+	#tworzy macierz sąsiedztwa na podstawie ciągu graficznego
+	def makeAM(self):
+		seq = [i for i in self.seq]
+		length = len(seq)
+		AM = []
+		AM = [[0 for i in range(length)] for vertices in seq]
+		for vertice in range(length):
+			next = vertice + 1
+			while seq[vertice] > 0:
+				AM[vertice][next] = AM[next][vertice] = 1
+				seq[vertice] -= 1	
+				seq[next] -= 1
+				next += 1
+		return AM
 		
-			while c == a or c == b:
-				c = randint(0, length)
-				
-			while self.adjacencyList[c][d] == 0 or d == c or d == a or d == b:
-				d+=1
-				if d > length:
-					break
-			else:
-				break
-			
-		
-		self.adjacencyList[a][b] = self.adjacencyList[b][a] = self.adjacencyList[c][d] = self.adjacencyList[d][c] = 0
-		self.adjacencyList[a][d] = self.adjacencyList[d][a] = self.adjacencyList[c][b] = self.adjacencyList[b][c] = 1'''
-
-	def toList(self):
-		length = len(self.adjacencyList)
+	def makeAL(self):
+		length = len(self.AM)
 		l=[[] for i in range(length)]
 		for i in range(length):
 			for j in range(length):
-				if self.adjacencyList[i][j] == 1 :
+				if self.AM[i][j] == 1 :
 					l[i].append(j+1)
 		return l
 
 
 	def countEdges(self):
 		n=0
-		for i in range(len(self.adjacencyList)):
-			for j in range(len(self.adjacencyList[i])):
-				if self.adjacencyList[i][j]==1 and j>i:
+		for i in range(len(self.AM)):
+			for j in range(len(self.AM[i])):
+				if self.AM[i][j]==1 and j>i:
 					n=n+1
 		return n
 
-	def toIM(self, li):
+	def makeIM(self):
 		edges=self.countEdges()		
-		vertices=len(li)
+		vertices=len(self.AL)
 		im=[[0 for i in range(vertices)] for j in range(edges)]
 		n=0
-		for i in range(len(li)):
-			for j in li[i]:
+		for i in range(len(self.AL)):
+			for j in self.AL[i]:
 				if j>i:
 					im[n][i]=im[n][j-1]=1
 					n=n+1
@@ -149,18 +123,17 @@ class Graph:
 		return im'''
 
 	def rand(self):
-		im=self.toIM(self.toList())
 		edges=self.countEdges()
 		edgesList=[[] for i in range(edges)]
-		for i in range(len(im)):
-			for j in range(len(im[i])):
-				if im[i][j]==1:
+		for i in range(len(self.IM)):
+			for j in range(len(self.IM[i])):
+				if self.IM[i][j]==1:
 					edgesList[i].append(j)
 		print(edgesList)			
 	
 		l=0
 		s=0
-		while l<4:
+		while l<1:
 			a=randrange(0,edges)
 			b=randrange(0,edges)
 			print(a,b)
@@ -170,8 +143,8 @@ class Graph:
 						edgesList[a][1],edgesList[b][1]=edgesList[b][1],edgesList[a][1]
 						l=l+1
 			s=s+1
-			if s>20:
-				break
+			'''if s>20:
+				break'''
 
 		return edgesList
 			
@@ -185,23 +158,9 @@ flag = isGraphical(seq)
 print( flag )
 if flag:
 	graph = Graph(seq)
-	print("\n\n")
-	graph.show()
+	graph.showAM()
+	print(graph.rand())
 
-	#print(len(graph.adjacencyList))
-	# randomizacja grafu
-	#graph.rand()
-	# porównanie po dokonanej randomizacji
-	#graph.show()
-
-	#print(graph.countEdges())
-
-
-
-	#print(graph.toIM(graph.toList()))
-
-#	print(graph.rand())
-	
 
 
 
