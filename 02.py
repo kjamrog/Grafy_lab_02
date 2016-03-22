@@ -51,6 +51,7 @@ class Graph:
 				next += 1
 		return AM
 		
+	#tworzt listę sąsiedztwa
 	def makeAL(self):
 		length = len(self.AM)
 		l=[[] for i in range(length)]
