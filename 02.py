@@ -39,12 +39,15 @@ class Graph:
 	#tworzy macierz sąsiedztwa na podstawie ciągu graficznego
 	def makeAM(self):
 		seq = [i for i in self.seq]
+		print(seq)
 		length = len(seq)
 		AM = []
 		AM = [[0 for i in range(length)] for vertices in seq]
 		for vertice in range(length):
 			next = vertice + 1
 			while seq[vertice] > 0:
+				while seq[next]==0:
+					next+=1
 				AM[vertice][next] = AM[next][vertice] = 1
 				seq[vertice] -= 1	
 				seq[next] -= 1
