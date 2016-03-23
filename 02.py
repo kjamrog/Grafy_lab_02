@@ -5,6 +5,7 @@
 from sys import argv
 from Graph import isGraphical
 from Graph import Graph
+from DFS import dfs
 
 			
 # przygotowanie ciągu		
@@ -15,7 +16,8 @@ if flag:
 	graph = Graph(seq)
 	graph.showAM()
 	print(graph.rand())
-
+	print(graph.AL)
+	dfs(graph)
 
 
 
