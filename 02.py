@@ -5,7 +5,7 @@
 from sys import argv
 from Graph import isGraphical
 from Graph import Graph
-from DFS import dfs
+from Dfs import Dfs
 
 			
 # przygotowanie ciągu		
@@ -17,7 +17,7 @@ if flag:
 	graph.showAM()
 	print(graph.rand())
 	print(graph.AL)
-	dfs(graph)
+	graphDfsInfo = Dfs(graph)
 
 
 
