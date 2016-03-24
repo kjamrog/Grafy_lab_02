@@ -17,7 +17,7 @@ if flag:
 	graph = Graph(seq)
 	graph.showAM()
 	#print(graph.rand())
-	#print(graph.AL)
+	print(graph.AL)
 	print()
 	graphDfsInfo = Dfs(graph)
 	print(graph.isEulerian())

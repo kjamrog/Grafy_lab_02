@@ -62,7 +62,7 @@ class Graph:
 		for i in range(length):
 			for j in range(length):
 				if self.AM[i][j] == 1 :
-					l[i].append(j+1)
+					l[i].append(j)
 		return l
 
 
@@ -74,7 +74,7 @@ class Graph:
 		for i in range(len(self.AL)):
 			for j in self.AL[i]:
 				if j>i:
-					im[n][i]=im[n][j-1]=1
+					im[n][i]=im[n][j]=1
 					n=n+1		
 		return im			
 	
