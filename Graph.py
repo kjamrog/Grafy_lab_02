@@ -24,8 +24,8 @@ def isGraphical(seq):
 class Graph:
 	# konstrukcja grafu
 	def __init__(self, seq):
-		seq.sort(reverse=True)
-		self.seq = (i for i in seq)
+		self.seq = [i for i in seq]
+		self.seq.sort(reverse=True)
 		#tworzenie kolejnych reprezentacji grafu, KOLEJNOŚĆ WYWOŁANIA WAŻNA !!!
 		self.AM = self.makeAM()
 		self.AL = self.makeAL()
@@ -116,4 +116,10 @@ class Graph:
 		# W tym miejscu po else dodać aktualizację wszystkich reprezentacji grafu!
 
 		return edgesList
+		
+	def isEulerian(self):
+		for i in self.seq:
+			if i%2 != 0:
+				return False
+		return True
 

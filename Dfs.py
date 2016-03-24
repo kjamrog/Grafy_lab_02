@@ -26,7 +26,7 @@ class Dfs:
 			if self.color[u] == "W":
 				self.dfsVisit(u)
 			
-		print(self.color)
+		del(self.color)
 		print(self.pre)
 		print(self.d)
 		print(self.f)		

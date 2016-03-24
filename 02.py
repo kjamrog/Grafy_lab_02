@@ -18,7 +18,7 @@ if flag:
 	print(graph.rand())
 	print(graph.AL)
 	graphDfsInfo = Dfs(graph)
-
+	print(graph.isEulerian())
 
 
 
