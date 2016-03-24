@@ -11,6 +11,7 @@ class Dfs:
 	def __init__(self, graph):
 		self.time = 0
 		self.vertices = range(len(graph.AL))
+		# przy zmianie na numercję wierzchołków od 0 zmienić z j-1 na j
 		self.al = [ [j-1 for j in i] for i in graph.AL]
 		self.color = []
 		self.pre = []
