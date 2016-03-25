@@ -5,6 +5,7 @@
 from sys import argv
 from Graph import isGraphical
 from Graph import Graph
+from Graph import kregular
 from Dfs import Dfs
 from Euler import eulerianPath
 
@@ -20,8 +21,10 @@ if flag:
 	print(graph.AL)
 	print()
 	graphDfsInfo = Dfs(graph)
-	print(graph.isEulerian())
-	eulerp = eulerianPath(graph)
-
+	#print(graph.isEulerian())
+	#eulerp = eulerianPath(graph)
+	print(graph.isHamiltonian())
+#kgraph=kregular()
+#kgraph.showAM()
 
 		

@@ -5,6 +5,8 @@
 # klasę Graph
 
 
+from random import randrange
+
 # sprawdzanie czy ciąg jest graficzny
 def isGraphical(seq):
 	length = len(seq)
@@ -19,6 +21,25 @@ def isGraphical(seq):
 			return True
 		if seq[0] < 0:
 			return False
+
+
+
+
+# funkcja tworząca i zwracająca losowy graf k-regularny
+def kregular():
+	f=False
+	while f==False:	
+		k=randrange(1,10)
+		il=randrange(1,10)
+		seq=[int(k) for i in range(il)]
+		if isGraphical(seq):
+			f=True	
+	print(f)
+	g=Graph(seq)
+	g.rand()
+	return g
+
+ 
 	
 # klasa Graph, tworzona na podstawie ciągu graficznego	
 class Graph:
@@ -54,6 +75,7 @@ class Graph:
 				seq[next] -= 1
 				next += 1
 		return AM
+
 		
 	# tworzy listę sąsiedztwa
 	def makeAL(self):
@@ -122,4 +144,60 @@ class Graph:
 			if i%2 != 0:
 				return False
 		return True
+
+
+	def isHamiltonian(self):
+		al=self.AL
+		length=len(al)
+		n=1
+		s={}
+		for i in range(length):	
+			for i in range(length):
+				s[i]=False
+			cur=i
+			s[cur]=True
+			l=[]
+			l.append(cur)
+			while len(l)<length:
+				j=0
+				while s[al[cur][j]]==True:
+					j=j+1
+					if j==len(al[cur]):
+						break	
+				if j<len(al[cur]):
+					cur=al[cur][j]
+					s[cur]=True
+					l.append(cur)
+					n=n+1
+					if len(l)==length:
+						return True
+				else: 
+					l.remove(cur)
+					if len(l)!=0:
+						cur=l[len(l)-1]
+					else:
+						break
+		return False
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
 
