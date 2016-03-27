@@ -1,21 +1,21 @@
 #!/usr/bin/env python3.4
 
 from Graph import Graph
-
-def eulerianPath(graph):
+	
+def eulerianCycle(graph):
 	al = [ [j for j in i] for i in graph.AL]
-	print(al)
 	stack = []
-	i = 0
-	stack.append(i)
-	while al[0]:
-		j = al[i][0]
-		stack.append(j)
-		al[i].remove(j)
-		al[j].remove(i)
-		i = j
-		
-	print(stack)
-
-		
-
+	cycle = []
+	v = 0
+	stack.append(v)
+	while stack:
+		v = stack.pop()
+		cycle.append(v)
+		print(cycle)
+		while al[v]:
+			w = al[v][0]
+			stack.append(v)
+			al[v].remove(w)
+			al[w].remove(v)
+			v=w	
+	return cycle

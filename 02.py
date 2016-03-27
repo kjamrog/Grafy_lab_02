@@ -7,7 +7,7 @@ from Graph import isGraphical
 from Graph import Graph
 from Graph import kregular
 from Dfs import Dfs
-from Euler import eulerianPath
+from Euler import eulerianCycle
 
 			
 # przygotowanie ciągu		
