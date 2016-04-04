@@ -80,6 +80,7 @@ class Graph:
 				seq[pom[vertice][1]] -=1
 				seq[pom[next][1]] -=1
 				next += 1
+				print(pom)
 		return AM
 
 		
