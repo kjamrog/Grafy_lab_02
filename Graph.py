@@ -61,18 +61,23 @@ class Graph:
 	# tworzy macierz sąsiedztwa na podstawie ciągu graficznego
 	def makeAM(self):
 		seq = [i for i in self.seq]
+		pom = [[seq[i],i] for i in range(len(seq))]
 		print(seq)
 		length = len(seq)
 		AM = []
 		AM = [[0 for i in range(length)] for vertices in seq]
-		for vertice in range(length):
+		for s in range(length):
+			pom.sort(reverse=True)
+			vertice = 0
 			next = vertice + 1
-			while seq[vertice] > 0:
-				while seq[next]==0:
+			while pom[vertice][0] > 0:
+				while pom[next][0]==0:
 					next+=1
-				AM[vertice][next] = AM[next][vertice] = 1
-				seq[vertice] -= 1	
-				seq[next] -= 1
+				AM[pom[vertice][1]][pom[next][1]] = AM[pom[next][1]][pom[vertice][1]] = 1
+				pom[vertice][0] -= 1	
+				pom[next][0] -= 1
+				seq[pom[vertice][1]] -=1
+				seq[pom[next][1]] -=1
 				next += 1
 		return AM
 
@@ -172,7 +177,7 @@ class Graph:
 					if len(l)==length:
 						return True
 				else: 
-					l.remove(cur)
+					l.remove(l[len(l)-1])
 					if len(l)!=0:
 						cur=l[len(l)-1]
 					else:

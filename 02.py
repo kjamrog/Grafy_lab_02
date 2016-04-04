@@ -24,7 +24,7 @@ if flag:
 	#print(graph.isEulerian())
 	#eulerp = eulerianPath(graph)
 	print(graph.isHamiltonian())
-#kgraph=kregular()
-#kgraph.showAM()
+kgraph=kregular()
+kgraph.showAM()
 
 		
