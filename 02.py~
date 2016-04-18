@@ -16,16 +16,16 @@ flag = isGraphical(seq)
 if ( flag == False ):
 	exit("Ciąg nie jest graficzny!")
 
-
-graph = Graph(seq)
-graph.showAM()
-#print(graph.rand())
-print(graph.AL)
-print()
-graphDfsInfo = Dfs(graph)
-#print(graph.isEulerian())
-#eulerp = eulerianPath(graph)
-print(graph.isHamiltonian())
+if flag:
+	graph = Graph(seq)
+	graph.showAM()
+	#print(graph.rand())
+	print(graph.AL)
+	print()
+	graphDfsInfo = Dfs(graph)
+	#print(graph.isEulerian())
+	#eulerp = eulerianPath(graph)
+	print(graph.isHamiltonian())
 kgraph=kregular()
 kgraph.showAM()
 

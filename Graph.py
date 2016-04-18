@@ -63,7 +63,6 @@ class Graph:
 		seq = [i for i in self.seq]
 		#pomocnicza lista dwuelementowych list (pierwszy element każdej listy to wartość a drugi to indeks tej wartosci w seq)
 		pom = [[seq[i],i] for i in range(len(seq))]
-		print(seq)
 		length = len(seq)
 		AM = []
 		AM = [[0 for i in range(length)] for vertices in seq]
