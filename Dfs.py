@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Algorytm przeszukiwania w głąb
 
 from Graph import Graph
@@ -13,8 +15,11 @@ class Dfs:
 		self.vertices = range(len(graph.AL))
 		self.al = [ [j for j in i] for i in graph.AL]
 		self.color = []
+		#poprzednicy w przechodzeniu
 		self.pre = []
+		#odwiedzony wierzchołek (zaznaczony na szaro)
 		self.d = []
+		#opuszczony wierzchołek (zaznaczony na czarno)
 		self.f = []
 		for i in self.vertices:
 			self.color.append("W")
@@ -27,10 +32,7 @@ class Dfs:
 				self.dfsVisit(u)
 			
 		del(self.color)
-		print(self.pre)
-		print(self.d)
-		print(self.f)		
-
+		
 
 	def dfsVisit(self, u):
 		self.color[u] = "G"
@@ -41,6 +43,13 @@ class Dfs:
 				self.dfsVisit(v)
 		self.color[u] = "B"
 		self.f[u] = self.time = self.time + 1
+		
+	def show(self):
+		for i in range(len(self.d)):
+			print(str(i)+"["+str(self.d[i])+"/"+str(self.f[i])+"]")
+		print(self.pre)
+		print(self.d)
+		print(self.f)		
 
 			
 

@@ -1,11 +1,13 @@
-#!/usr/bin/env python3.4
-
+# -*- coding: utf-8 -*-
 # Moduł zawierający: 
 # funkcję sprawdzającą czy ciąg jest graficzny
 # klasę Graph
 
 
 from random import randrange
+from os import remove
+import networkx as nx
+import matplotlib.pyplot as plt
 
 # sprawdzanie czy ciąg jest graficzny
 def isGraphical(seq):
@@ -55,7 +57,18 @@ class Graph:
 				
 	# wyświetlanie grafu				
 	def showAM(self):
+		print( "\nMacierz sąsiedztwa:\n" )
 		for i in self.AM:
+			print( [j for j in i])
+	
+	def showAL(self):
+		print( "\nLista sąsiedztwa:\n" )
+		for i in range(len(self.AL)):
+			print(str(i)+" -> "+str(self.AL[i]))
+			
+	def showIM(self):
+		print( "\nMacierz incydencji:\n")
+		for i in self.IM:
 			print( [j for j in i])
 	
 	# tworzy macierz sąsiedztwa na podstawie ciągu graficznego
@@ -117,16 +130,17 @@ class Graph:
 
 	def rand(self):
 		from random import randrange
-	
+
 		edges=self.countEdges()
 		edgesList=[[] for i in range(edges)]
 		for i in range(len(self.IM)):
 			for j in range(len(self.IM[i])):
 				if self.IM[i][j]==1:
-					edgesList[i].append(j)
-		print(edgesList)			
-	
+					edgesList[i].append(j)	
+
 		l, s = 0, 0
+		a, b = None, None
+		# wyszukiwanie i zamiana krawędzi
 		while l<1:
 			a=randrange(0,edges)
 			b=randrange(0,edges)
@@ -138,12 +152,14 @@ class Graph:
 			s=s+1
 			if s>2000:
 				print("Grafu nie można randomizować!")
-				break
-		# else:	
-		# W tym miejscu po else dodać aktualizację wszystkich reprezentacji grafu!
+				return
+		# aktualizacja reprezentacji grafu
+		w, x, y, z = edgesList[a][0], edgesList[b][1], edgesList[b][0], edgesList[a][1]
+		self.AM[w][x]=self.AM[x][w]=self.AM[y][z]=self.AM[z][y]=0
+		self.AM[w][z]=self.AM[z][w]=self.AM[y][x]=self.AM[x][y]=1
+		self.AL = self.makeAL()
+		self.IM = self.makeIM()
 
-		return edgesList
-		
 	def isEulerian(self):
 		for i in self.seq:
 			if i%2 != 0:
@@ -185,24 +201,22 @@ class Graph:
 		return False
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	def draw(self):
+		g = nx.Graph()
+		nr = 0
+		for i in range(len(self.AL)):
+		    g.add_node(i)
+		    for j in self.AL[i]:
+		        if j > i:
+		            g.add_edge(i, j)
+		            nr += 1
 
 		
+		pos = nx.shell_layout(g)
+		nx.draw_networkx_nodes(g, pos, node_size=300)
+		nx.draw_networkx_edges(g, pos)
+		nx.draw_networkx_labels(g, pos)
 
+		plt.axis('off')
+		#remove("temp.png")
+		plt.savefig("temp.png")
