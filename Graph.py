@@ -146,7 +146,7 @@ class Graph:
 			b=randrange(0,edges)
 			if a!=b:
 				if (edgesList[a][0] not in edgesList[b]) and (edgesList[a][1] not in edgesList[b]):
-					if [edgesList[a][0],edgesList[b][1]] not in edgesList and [edgesList[b][0],edgesList[a][1]] not in edgesList:					
+					if [edgesList[a][0],edgesList[b][1]] not in edgesList and [edgesList[b][0],edgesList[a][1]] not in edgesList and [edgesList[b][1],edgesList[a][0]] not in edgesList and [edgesList[a][1],edgesList[b][0]] not in edgesList:					
 						edgesList[a][1],edgesList[b][1]=edgesList[b][1],edgesList[a][1]
 						l=l+1
 			s=s+1
