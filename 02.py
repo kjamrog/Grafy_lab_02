@@ -38,7 +38,7 @@ kgraph=kregular()
 kgraph.showAM()
 graph.draw()
 '''
-'''
+
 flag = None
 while True:
 	menu()
@@ -55,8 +55,10 @@ while True:
 		graph.draw()
 	elif flag==5:
 		for i in range(randint(5, 10)):
-			graph.rand()
-'''
+			if not graph.rand():
+				print("Grafu nie można randomizować!")
+				break
+
 
 graph.showAM()
 

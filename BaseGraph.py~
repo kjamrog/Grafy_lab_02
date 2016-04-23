@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Moduł zawierający: 
 # funkcję sprawdzającą czy ciąg jest graficzny
 # klasę BaseGraph - bazowa klasa reprezentująca graf dla zestawów 2 i 3

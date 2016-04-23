@@ -131,14 +131,15 @@ class BaseGraph:
 						l=l+1
 			s=s+1
 			if s>2000:
-				print("Grafu nie można randomizować!")
-				return
+				return False
 		# aktualizacja reprezentacji grafu
 		w, x, y, z = edgesList[a][0], edgesList[b][1], edgesList[b][0], edgesList[a][1]
 		self.AM[w][x]=self.AM[x][w]=self.AM[y][z]=self.AM[z][y]=0
 		self.AM[w][z]=self.AM[z][w]=self.AM[y][x]=self.AM[x][y]=1
 		self.AL = self.makeAL()
 		self.IM = self.makeIM()
+		
+		return True
 
 	# rosowanie grafu
 	def draw(self):

@@ -28,9 +28,8 @@ if isGraphical(seq) == False:
 	exit("Ciąg nie jest graficzny!")
 
 
-'''
 graph = Graph(seq)
-graphDfsInfo = Dfs(graph)
+'''graphDfsInfo = Dfs(graph)
 graphDfsInfo.show()
 print(graph.isEulerian())
 eulerp = eulerianCycle(graph)
@@ -39,7 +38,7 @@ kgraph=kregular()
 kgraph.showAM()
 graph.draw()
 '''
-'''
+
 flag = None
 while True:
 	menu()
@@ -57,7 +56,7 @@ while True:
 	elif flag==5:
 		for i in range(randint(5, 10)):
 			graph.rand()
-'''
+
 
 graph.showAM()
 
