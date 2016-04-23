@@ -34,7 +34,6 @@ class Dfs:
 			
 		del(self.color)
 		del(self.time)
-		del(self.al)
 		
 
 	def dfsVisit(self, u):

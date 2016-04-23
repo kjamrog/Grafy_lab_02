@@ -22,5 +22,5 @@ def eulerianCycle(graph):
 		if i==len(cycle)-1:
 			print(cycle[i])
 		else:
-			print(cycle[i], end=" -> ")
+			print(cycle[i], end="->")
 	return cycle

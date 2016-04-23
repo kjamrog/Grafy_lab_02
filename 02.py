@@ -18,6 +18,9 @@ def menu():
 3. Macierz incydencji
 4. Rysuj graf
 5. Radnomizacja grafu
+6. Przeszukiwanie grafu w głąb
+7. Cykl Eulera
+8. Cykl Hamiltona
 0. Exit
 '''
 			
@@ -29,11 +32,7 @@ if isGraphical(seq) == False:
 
 
 graph = Graph(seq)
-'''graphDfsInfo = Dfs(graph)
-graphDfsInfo.show()
-print(graph.isEulerian())
-eulerp = eulerianCycle(graph)
-print(graph.isHamiltonian())
+'''
 kgraph=kregular()
 kgraph.showAM()
 graph.draw()
@@ -58,12 +57,16 @@ while True:
 			if not graph.rand():
 				print("Grafu nie można randomizować!")
 				break
-
-
-graph.showAM()
-
-graph.rand()
-graph.showAM()
-graph.draw()
+	elif flag==6:
+		dfs = Dfs(graph)
+		dfs.show()
+	elif flag==7:
+		if graph.isEulerian():
+			eulerianCycle(graph)
+		else:
+			print "Graf nie posiada cyku Eulera!"
+	elif flag==8:
+		if graph.isHamiltonian():
+			print "Graf jest hamiltonowski"
 
 		
