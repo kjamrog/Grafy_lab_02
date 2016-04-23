@@ -28,16 +28,16 @@ if isGraphical(seq) == False:
 	exit("Ciąg nie jest graficzny!")
 
 
-
 graph = Graph(seq)
-graphDfsInfo = Dfs(graph)
-#graphDfsInfo.show()
-#print(graph.isEulerian())
-#eulerp = eulerianPath(graph)
-#print(graph.isHamiltonian())
-#kgraph=kregular()
-#kgraph.showAM()
-#graph.draw()
+'''graphDfsInfo = Dfs(graph)
+graphDfsInfo.show()
+print(graph.isEulerian())
+eulerp = eulerianCycle(graph)
+print(graph.isHamiltonian())
+kgraph=kregular()
+kgraph.showAM()
+graph.draw()
+'''
 '''
 flag = None
 while True:
