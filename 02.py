@@ -30,7 +30,7 @@ if isGraphical(seq) == False:
 
 
 graph = Graph(seq)
-#graphDfsInfo = Dfs(graph)
+graphDfsInfo = Dfs(graph)
 #graphDfsInfo.show()
 #print(graph.isEulerian())
 #eulerp = eulerianPath(graph)
@@ -38,7 +38,7 @@ graph = Graph(seq)
 #kgraph=kregular()
 #kgraph.showAM()
 #graph.draw()
-
+'''
 flag = None
 while True:
 	menu()
@@ -56,4 +56,12 @@ while True:
 	elif flag==5:
 		for i in range(randint(5, 10)):
 			graph.rand()
+'''
+
+graph.showAM()
+
+graph.rand()
+graph.showAM()
+graph.draw()
+
 		
