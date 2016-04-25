@@ -18,7 +18,6 @@ def kregular():
 		seq=[int(k) for i in range(il)]
 		if isGraphical(seq):
 			f=True	
-	print(f)
 	g=Graph(seq)
 	g.rand()
 	return g
@@ -48,6 +47,7 @@ class Graph(BaseGraph):
 
 		plt.axis('off')
 		plt.savefig("temp.png")
+		plt.clf()
 
 
 	def isEulerian(self):

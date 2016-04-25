@@ -21,6 +21,7 @@ def menu():
 6. Przeszukiwanie grafu w głąb
 7. Cykl Eulera
 8. Cykl Hamiltona
+9. Graf k-regularny
 0. Exit
 '''
 			
@@ -68,5 +69,7 @@ while True:
 	elif flag==8:
 		if graph.isHamiltonian():
 			print "Graf jest hamiltonowski"
+	elif flag==9:
+		graph=kregular()
 
 		
