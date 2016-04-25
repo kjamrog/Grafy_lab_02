@@ -69,6 +69,8 @@ while True:
 	elif flag==8:
 		if graph.isHamiltonian():
 			print "Graf jest hamiltonowski"
+		else:
+			print "Graf nie jest hamiltonowski"
 	elif flag==9:
 		graph=kregular()
 
